@@ -241,10 +241,11 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
   padding: 60px 32px;
   position: relative;
+  padding-top: 10px;
 }
 
 /* ── Handwritten SVG logo ── */
@@ -513,13 +514,13 @@ img {
       rgba(0, 0, 0, 0.08));
   z-index: 1;
 }
+
 .about-card-full::after {
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.55),
-    rgba(0,0,0,0.15)
-  );
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.15));
 }
+
 /* ============================================================
    PROJECTS GRID (main page)
    ============================================================ */
