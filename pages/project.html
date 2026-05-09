@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project — Olivia Ahn</title>
   <link rel="stylesheet" href="../css/style.css" />
 </head>
+
 <body>
 
   <!-- ============================================================
@@ -13,23 +15,35 @@
        ============================================================ -->
   <header id="site-header">
     <div class="header-logo">
-      <a href="../index.html" aria-label="Home">ahn</a>
+      <a href="../index.html" aria-label="Home">
+        <img src="../assets/logo.png" alt="Olivia Ahn logo" />
+      </a>
     </div>
 
     <nav>
       <ul class="header-nav">
         <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#projects">Work</a></li>
-        <li><a href="cart.html">Contact</a></li>
+        <li class="nav-item-work">
+          <a href="../index.html#projects">Work</a>
+          <div class="nav-dropdown nav-dropdown-work" id="work-dropdown">
+            <!-- Populated by project.js -->
+          </div>
+        </li>
+        <li class="nav-item-contact">
+          <a href="cart.html">Contact</a>
+          <div class="nav-dropdown nav-dropdown-contact" id="contact-dropdown">
+            <!-- Populated by project.js -->
+          </div>
+        </li>
       </ul>
     </nav>
 
     <div class="header-icons">
       <a href="cart.html" class="header-icon-btn" aria-label="Shopping bag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 01-8 0"/>
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
         </svg>
         <span class="cart-badge" id="cart-badge">0</span>
       </a>
@@ -44,9 +58,30 @@
 
       <!-- Left: project image -->
       <div class="product-image-panel">
-        <div class="product-image-placeholder" id="product-image-wrapper">
-          <!-- Image injected by project.js -->
-          <span>Image Placeholder</span>
+        <div class="product-image-viewer">
+          <!-- Main image -->
+          <div class="product-image-main" id="product-image-main">
+            <img id="main-image" src="" alt="Product image" style="display: none;" />
+            <span id="image-placeholder">Image Placeholder</span>
+          </div>
+
+          <!-- Navigation buttons -->
+          <button class="image-nav-btn image-nav-prev" id="image-prev" aria-label="Previous image"
+            style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="image-nav-btn image-nav-next" id="image-next" aria-label="Next image" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <!-- Image preview gallery -->
+          <div class="product-image-previews" id="product-image-previews">
+            <!-- Thumbnails injected by project.js -->
+          </div>
         </div>
       </div>
 
@@ -104,4 +139,5 @@
   <script src="../js/cart.js"></script>
   <script src="../js/project.js"></script>
 </body>
+
 </html>

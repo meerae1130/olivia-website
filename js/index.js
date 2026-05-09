@@ -7,19 +7,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ── Populate contact links from data.js ── */
   const info = window.PERSONAL_INFO;
-  document.getElementById("link-linkedin").href   = info.linkedin;
-  document.getElementById("link-github").href     = info.github;
-  document.getElementById("link-instagram").href  = info.instagram;
-  document.getElementById("link-email").href      = `mailto:${info.email}`;
-  document.getElementById("year").textContent     = new Date().getFullYear();
+  document.getElementById("link-linkedin").href = info.linkedin;
+  document.getElementById("link-github").href = info.github;
+  document.getElementById("link-instagram").href = info.instagram;
+  document.getElementById("link-email").href = `mailto:${info.email}`;
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ── Populate header dropdown menus ── */
+  const projects = window.PROJECTS;
+
+  // Work dropdown - list all projects
+  const workDropdown = document.getElementById("work-dropdown");
+  workDropdown.innerHTML = "";
+
+  projects.forEach((project) => {
+    const link = document.createElement("a");
+    link.href = `pages/project.html?id=${project.id}`;
+    link.textContent = project.title;
+    workDropdown.appendChild(link);
+  });
+
+  // Contact dropdown - list all contact methods
+  const contactDropdown = document.getElementById("contact-dropdown");
+  contactDropdown.innerHTML = "";
+
+  const contactMethods = [
+    { label: "Email", url: `mailto:${info.email}` },
+    { label: "LinkedIn", url: `https://${info.linkedin}` },
+    { label: "GitHub", url: info.github },
+    { label: "Instagram", url: info.instagram },
+  ];
+  contactMethods.forEach((method) => {
+    const link = document.createElement("a");
+    link.href = method.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = method.label;
+    contactDropdown.appendChild(link);
+  });
 
   /* ── Cart badge ── */
   updateCartBadge();
   window.addEventListener("cart-updated", updateCartBadge);
 
   /* ── Render projects grid ── */
-  const grid     = document.getElementById("projects-grid");
-  const projects = window.PROJECTS;
+  const grid = document.getElementById("projects-grid");
 
   projects.forEach((project) => {
     const card = document.createElement("div");
@@ -28,9 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
     card.innerHTML = `
       <div class="project-card-img">
         ${project.image
-          ? `<img src="${project.image}" alt="${project.title}" loading="lazy" />`
-          : `<span class="placeholder-label">Image Placeholder</span>`
-        }
+        ? `<img src="${"assets/battery/cover.png"}" alt="${project.title}" loading="lazy" />`
+        : `<span class="placeholder-label">Image Placeholder</span>`
+      }
         <span class="tag-new">New</span>
       </div>
       <div class="project-card-info">
@@ -57,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ── Scroll reveal ── */
   const revealEls = document.querySelectorAll(".reveal");
-  const observer  = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
     { threshold: 0.12 }
   );

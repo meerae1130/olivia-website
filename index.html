@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Olivia Ahn</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
   <!-- ============================================================
@@ -14,15 +16,27 @@
   <header id="site-header">
     <!-- Logo -->
     <div class="header-logo">
-      <a href="index.html" aria-label="Home">ahn</a>
+      <a href="index.html" aria-label="Home">
+        <img src="assets/logo.png" alt="Olivia Ahn logo" />
+      </a>
     </div>
 
     <!-- Navigation -->
     <nav>
       <ul class="header-nav">
         <li><a href="#about">About</a></li>
-        <li><a href="#projects">Work</a></li>
-        <li><a href="cart.html">Contact</a></li>
+        <li class="nav-item-work">
+          <a href="#projects">Work</a>
+          <div class="nav-dropdown nav-dropdown-work" id="work-dropdown">
+            <!-- Populated by index.js -->
+          </div>
+        </li>
+        <li class="nav-item-contact">
+          <a href="cart.html">Contact</a>
+          <div class="nav-dropdown nav-dropdown-contact" id="contact-dropdown">
+            <!-- Populated by index.js -->
+          </div>
+        </li>
       </ul>
     </nav>
 
@@ -31,9 +45,9 @@
       <!-- Cart icon -->
       <a href="cart.html" class="header-icon-btn" aria-label="Shopping bag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 01-8 0"/>
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
         </svg>
         <span class="cart-badge" id="cart-badge">0</span>
       </a>
@@ -48,47 +62,16 @@
     <!-- ── HERO SECTION ── -->
     <section class="hero" id="home">
 
-      <!-- Handwritten "ahn" logo as inline SVG -->
+      <!-- Logo -->
       <div class="hero-logo" aria-hidden="true">
-        <svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Handwritten-style "ahn" path — loose, childlike strokes -->
-          <path
-            d="M 22 62
-               C 20 44, 24 32, 34 30
-               C 44 28, 50 38, 48 52
-               C 46 62, 40 68, 36 66
-               C 32 64, 34 56, 44 58
-               C 52 60, 56 72, 54 76"
-            stroke="#0a0a0a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path
-            d="M 68 16
-               C 68 16, 66 44, 66 62
-               C 66 72, 68 78, 70 76"
-            stroke="#0a0a0a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path
-            d="M 66 42
-               C 72 34, 82 30, 90 32
-               C 98 34, 100 44, 100 54
-               C 100 64, 100 72, 100 76"
-            stroke="#0a0a0a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path
-            d="M 114 38
-               C 116 34, 122 30, 130 32
-               C 140 34, 144 46, 142 58
-               C 140 68, 136 74, 136 74
-               M 142 38
-               C 144 38, 154 36, 160 42
-               C 166 48, 164 60, 162 72
-               C 160 80, 158 82, 158 80"
-            stroke="#0a0a0a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
+        <img src="assets/logo.png" alt="Olivia Ahn logo" />
       </div>
 
       <!-- Name -->
       <h1 class="hero-name">Olivia Ahn</h1>
 
       <!-- 1-sentence position description -->
-      <p class="hero-tagline">Software Engineer &mdash; Building thoughtful digital experiences</p>
+      <p class="hero-tagline">ECE 2T9 + PEY co-op @ University of Toronto</p>
 
       <!-- Contact links -->
       <div class="hero-contacts">
@@ -96,9 +79,9 @@
         <!-- LinkedIn -->
         <a class="contact-link" href="#" id="link-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
           </svg>
           <span>LinkedIn</span>
         </a>
@@ -106,7 +89,8 @@
         <!-- GitHub -->
         <a class="contact-link" href="#" id="link-github" target="_blank" rel="noopener" aria-label="GitHub">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
           </svg>
           <span>GitHub</span>
         </a>
@@ -114,9 +98,9 @@
         <!-- Instagram -->
         <a class="contact-link" href="#" id="link-instagram" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
           </svg>
           <span>Instagram</span>
         </a>
@@ -124,8 +108,8 @@
         <!-- Email -->
         <a class="contact-link" href="#" id="link-email" aria-label="Email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
           </svg>
           <span>Email</span>
         </a>
@@ -143,13 +127,17 @@
     <section class="about-section reveal" id="about">
       <div class="about-label">About</div>
       <div class="about-body">
-        <h2>Engineering with intention.</h2>
+        <h2>Forever a Learner.</h2>
         <!-- TODO: Replace with your own bio -->
         <p>
-          I'm a software engineer with a passion for building clean, thoughtful, and user-centered products.
-          With experience across full-stack development, machine learning, and mobile applications, I bring
-          both technical depth and an eye for design to everything I build. I believe great software is
-          as much about the experience as the code behind it.
+          From a young age, I’ve always had a huge variety of interests, from dinosaurs and air balloons to art and
+          baking. I think I’ve always just enjoyed learning new things and finding ways to connect different ideas and
+          concepts together. That’s one trait I’m proud to say I still have today.
+          Despite being a firm believer of “no pain, no gain,” especially when it comes to education and personal
+          growth, I also think there’s something genuinely rewarding about learning. It definitely isn’t always easy to
+          stay curious or motivated, but I take pride in my ability to learn, adapt, and continuously improve.
+          As an engineering student, I enjoy combining technical thinking with creativity and design to create things
+          that are both functional and meaningful.
         </p>
       </div>
     </section>
@@ -179,4 +167,5 @@
   <script src="js/cart.js"></script>
   <script src="js/index.js"></script>
 </body>
+
 </html>

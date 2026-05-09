@@ -1,68 +1,49 @@
-// ============================================================
-// data.js — Edit this file to update your projects & personal info
-// ============================================================
-
 const PERSONAL_INFO = {
   name: "Olivia Ahn",
-  title: "Software Engineer",
-  email: "olivia@email.com",         // ← replace with your email
-  linkedin: "https://linkedin.com/in/oliviaahn",  // ← replace
-  github: "https://github.com/oliviaahn",         // ← replace
-  instagram: "https://instagram.com/oliviaahn",   // ← replace
+  title: "Computer Engineer",
+  email: "ahnmeerae@gmail.com",
+  linkedin: "www.linkedin.com/in/meeraeahn",
+  github: "https://github.com/meerae1130",
+  instagram: "https://www.instagram.com/meer_ae?igsh=YzNsMjY5Y3A0dmp1&utm_source=qr",
 };
 
 // ============================================================
-// PROJECTS — Add/remove objects here to update the portfolio
-// Each project appears as a "product" on the main page.
+// PROJECTS add and remove this section in the future to edit products sec. 
 // ============================================================
 const PROJECTS = [
   {
     id: 1,
-    title: "Project Alpha",
-    subtitle: "Full-Stack Web App",
-    date: "03/15/2024",
+    title: "Battery Organization Project",
+    subtitle: "ESP Design Project",
+    date: "01/2025 - 04/2026",
     description:
-      "A full-stack web application built with React and Node.js that allows users to collaboratively manage tasks in real time using WebSocket technology. Designed with accessibility in mind and deployed on AWS with CI/CD pipelines.",
-    image: null, // replace null with a path like: "assets/project1.jpg"
+      "Designed and implemented a battery organization system with five other engineering students for the University of Toronto's Blue and Gold Committee.\
+      Using Blender, SolidWorks, and 3D printing, the team created a modular, stackable design via dovetail joints, maximizing storage efficiency and durability.\
+      As the project manager, I coordinated weekly meetings, delegated tasks, and ensured timely completion of milestones by creating and frequently updating the Gantt Chart.\
+      The final product was presented at the 2026 ESP Design Expo, receiving positive feedback for its innovative design and practical application, by the committee members and professional engineers in attendance.",
+    image: "assets/battery/desc1.png",
+    image: "assets/battery/desc2.png",
+    image: "assets/battery/desc3.png",
+    image: "assets/battery/desc4.png",  
+    image: "assets/battery/desc5.png",
+    images: ["assets/battery/desc1.png", "assets/battery/desc2.png", "assets/battery/desc3.png", "assets/battery/desc4.png", "assets/battery/desc5.png"],
     links: [
-      { icon: "github", label: "GitHub", url: "https://github.com/oliviaahn/project-alpha" },
+      { icon: "bng", label: "bng", url: "https://blueandgold.skule.ca" },
     ],
   },
-  {
-    id: 2,
-    title: "ML Pipeline",
-    subtitle: "Machine Learning",
-    date: "11/02/2023",
-    description:
-      "An end-to-end machine learning pipeline for sentiment analysis on social media data. Trained a transformer-based model achieving 94% accuracy, with a FastAPI backend serving predictions at scale.",
-    image: null,
-    links: [
-      { icon: "github", label: "GitHub", url: "https://github.com/oliviaahn/ml-pipeline" },
-      { icon: "external", label: "Live Demo", url: "https://demo.example.com" },
-    ],
-  },
-  {
-    id: 3,
-    title: "iOS Application",
-    subtitle: "Mobile Development",
-    date: "06/20/2023",
-    description:
-      "A SwiftUI iOS application that integrates CoreML and Vision frameworks to provide real-time plant identification from camera input. Published on the App Store with over 2,000 downloads.",
-    image: null,
-    links: [
-      { icon: "github", label: "GitHub", url: "https://github.com/oliviaahn/plant-app" },
-    ],
-  },
-  {
-    id: 4,
-    title: "Design System",
-    subtitle: "UI/UX Engineering",
-    date: "01/10/2024",
-    description:
-      "Designed and documented a component library for a team of 12 engineers. Built in React with Storybook, covering 40+ components, dark/light modes, and WCAG 2.1 AA compliance.",
-    image: null,
-    links: [],
-  },
+  // {
+  //   id: 2,
+  //   title: "ML Pipeline",
+  //   subtitle: "Machine Learning",
+  //   date: "11/02/2023",
+  //   description:
+  //     "An end-to-end machine learning pipeline for sentiment analysis on social media data. Trained a transformer-based model achieving 94% accuracy, with a FastAPI backend serving predictions at scale.",
+  //   image: null,
+  //   links: [
+  //     { icon: "github", label: "GitHub", url: "https://github.com/oliviaahn/ml-pipeline" },
+  //     { icon: "external", label: "Live Demo", url: "https://demo.example.com" },
+  //   ],
+  // },
 ];
 
 // Expose globally

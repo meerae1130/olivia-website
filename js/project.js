@@ -6,10 +6,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ── Get project id from URL ── */
-  const params  = new URLSearchParams(window.location.search);
-  const id      = parseInt(params.get("id"), 10);
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"), 10);
   const projects = window.PROJECTS;
-  const project  = projects.find((p) => p.id === id);
+  const project = projects.find((p) => p.id === id);
 
   /* Redirect home if not found */
   if (!project) {
@@ -17,23 +17,107 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  /* ── Populate header dropdown menus ── */
+  const info = window.PERSONAL_INFO;
+
+  // Work dropdown - list all projects
+  const workDropdown = document.getElementById("work-dropdown");
+  projects.forEach((proj) => {
+    const link = document.createElement("a");
+    link.href = `project.html?id=${proj.id}`;
+    link.textContent = proj.title;
+    workDropdown.appendChild(link);
+  });
+
+  // Contact dropdown - list all contact methods
+  const contactDropdown = document.getElementById("contact-dropdown");
+  const contactMethods = [
+    { label: "Email", url: `mailto:${info.email}` },
+    { label: "LinkedIn", url: `https://${info.linkedin}` },
+    { label: "GitHub", url: info.github },
+    { label: "Instagram", url: info.instagram },
+  ];
+  contactMethods.forEach((method) => {
+    const link = document.createElement("a");
+    link.href = method.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = method.label;
+    contactDropdown.appendChild(link);
+  });
+
   /* ── Populate page title (browser tab) ── */
   document.title = `${project.title} — Olivia Ahn`;
 
   /* ── Breadcrumb ── */
   document.getElementById("breadcrumb-title").textContent = project.title;
 
-  /* ── Left image panel ── */
-  const imgWrapper = document.getElementById("product-image-wrapper");
-  if (project.image) {
-    imgWrapper.innerHTML = `<img src="../${project.image}" alt="${project.title}" />`;
+  /* ── Left image panel (multi-image support) ── */
+  const images = project.images || (project.image ? [project.image] : []);
+  let currentImageIndex = 0;
+
+  const mainImage = document.getElementById("main-image");
+  const imagePlaceholder = document.getElementById("image-placeholder");
+  const previewsContainer = document.getElementById("product-image-previews");
+  const prevBtn = document.getElementById("image-prev");
+  const nextBtn = document.getElementById("image-next");
+
+  // Populate preview gallery
+  if (images.length > 0) {
+    images.forEach((img, index) => {
+      const preview = document.createElement("div");
+      preview.className = `product-image-preview ${index === 0 ? "active" : ""}`;
+      preview.innerHTML = `<img src="../${img}" alt="Preview ${index + 1}" />`;
+      preview.addEventListener("click", () => showImage(index));
+      previewsContainer.appendChild(preview);
+    });
+    imagePlaceholder.style.display = "none";
+    mainImage.style.display = "block";
+    prevBtn.style.display = images.length > 1 ? "flex" : "none";
+    nextBtn.style.display = images.length > 1 ? "flex" : "none";
+  } else {
+    mainImage.style.display = "none";
+    imagePlaceholder.style.display = "flex";
   }
-  // Otherwise the default placeholder span stays
+
+  // Show image by index
+  function showImage(index) {
+    currentImageIndex = index;
+    const imgPath = `../${images[index]}`;
+    mainImage.src = imgPath;
+
+    // Update preview active state
+    document.querySelectorAll(".product-image-preview").forEach((p, i) => {
+      p.classList.toggle("active", i === index);
+    });
+
+    // Scroll preview into view
+    const previews = document.querySelectorAll(".product-image-preview");
+    if (previews[index]) {
+      previewsContainer.scrollLeft = previews[index].offsetLeft - 8;
+    }
+  }
+
+  // Navigation handlers
+  prevBtn.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    showImage(currentImageIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    showImage(currentImageIndex);
+  });
+
+  // Initialize with first image
+  if (images.length > 0) {
+    showImage(0);
+  }
 
   /* ── Title, subtitle, date ── */
-  document.getElementById("product-title").textContent    = project.title;
+  document.getElementById("product-title").textContent = project.title;
   document.getElementById("product-subtitle").textContent = project.subtitle;
-  document.getElementById("product-date").textContent     = `$ ${project.date}`;
+  document.getElementById("product-date").textContent = `$ ${project.date}`;
 
   /* ── Platform links (GitHub, etc.) ── */
   const linksContainer = document.getElementById("product-links");
@@ -42,9 +126,9 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     project.links.forEach((link) => {
       const a = document.createElement("a");
-      a.href   = link.url;
+      a.href = link.url;
       a.target = "_blank";
-      a.rel    = "noopener noreferrer";
+      a.rel = "noopener noreferrer";
       a.setAttribute("aria-label", link.label);
       a.className = "product-link-btn";
       a.innerHTML = getIconSVG(link.icon);
@@ -82,16 +166,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ── Next project ── */
   const currentIndex = projects.findIndex((p) => p.id === id);
-  const nextProject  = projects[(currentIndex + 1) % projects.length];
+  const nextProject = projects[(currentIndex + 1) % projects.length];
 
   if (nextProject && nextProject.id !== id) {
     const card = document.getElementById("next-project-card");
     card.innerHTML = `
       <div class="next-project-thumb">
         ${nextProject.image
-          ? `<img src="../${nextProject.image}" alt="${nextProject.title}" />`
-          : ``
-        }
+        ? `<img src="../${nextProject.image}" alt="${nextProject.title}" />`
+        : ``
+      }
       </div>
       <div class="next-project-info">
         <h4>${nextProject.title}</h4>
@@ -139,6 +223,12 @@ function getIconSVG(type) {
       <path d="M5 19.5A3.5 3.5 0 018.5 16H12v3.5a3.5 3.5 0 11-7 0z"/>
       <path d="M5 12.5A3.5 3.5 0 018.5 9H12v7H8.5A3.5 3.5 0 015 12.5z"/>
     </svg>`,
+    linkedin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+      <rect x="2" y="9" width="4" height="12"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>`,
+    bng: "BnG"
   };
   /* Default to external link icon */
   return icons[type] || icons.external;

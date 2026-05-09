@@ -45,3 +45,75 @@ const Cart = {
 };
 
 window.Cart = Cart;
+
+document.addEventListener("DOMContentLoaded", () => {
+  /* ── Populate header dropdown menus ── */
+  const info = window.PERSONAL_INFO;
+  const projects = window.PROJECTS;
+
+  // Work dropdown - list all projects
+  const workDropdown = document.getElementById("work-dropdown");
+  if (workDropdown) {
+    projects.forEach((project) => {
+      const link = document.createElement("a");
+      link.href = `pages/project.html?id=${project.id}`;
+      link.textContent = project.title;
+      workDropdown.appendChild(link);
+    });
+  }
+
+  // Contact dropdown - list all contact methods
+  const contactDropdown = document.getElementById("contact-dropdown");
+  if (contactDropdown) {
+    const contactMethods = [
+      { label: "Email", url: `mailto:${info.email}` },
+      { label: "LinkedIn", url: `https://${info.linkedin}` },
+      { label: "GitHub", url: info.github },
+      { label: "Instagram", url: info.instagram },
+    ];
+    contactMethods.forEach((method) => {
+      const link = document.createElement("a");
+      link.href = method.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = method.label;
+      contactDropdown.appendChild(link);
+    });
+  }
+});
+
+function initHeaderScrollToggle() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function updateHeader() {
+    const currentScrollY = window.scrollY;
+    const delta = currentScrollY - lastScrollY;
+
+    if (Math.abs(delta) < 10) {
+      ticking = false;
+      return;
+    }
+
+    if (currentScrollY <= 0 || delta < 0) {
+      header.classList.remove('header-hidden');
+    } else if (delta > 0) {
+      header.classList.add('header-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initHeaderScrollToggle);
