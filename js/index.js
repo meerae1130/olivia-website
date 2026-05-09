@@ -50,26 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ── Cart badge ── */
   updateCartBadge();
   window.addEventListener("cart-updated", updateCartBadge);
-  /* ── About carousel arrows ── */
-  const aboutCarousel = document.getElementById("about-carousel");
-  const aboutPrev = document.getElementById("about-prev");
-  const aboutNext = document.getElementById("about-next");
-
-  if (aboutCarousel && aboutPrev && aboutNext) {
-    aboutPrev.addEventListener("click", () => {
-      aboutCarousel.scrollBy({
-        left: -aboutCarousel.clientWidth * 0.75,
-        behavior: "smooth",
-      });
-    });
-
-    aboutNext.addEventListener("click", () => {
-      aboutCarousel.scrollBy({
-        left: aboutCarousel.clientWidth * 0.75,
-        behavior: "smooth",
-      });
-    });
-  }
 
   /* ── Render projects grid ── */
   const grid = document.getElementById("projects-grid");
