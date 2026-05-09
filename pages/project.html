@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project — Olivia Ahn</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header id="site-header">
+    <div class="header-logo">
+      <a href="../index.html" aria-label="Home">ahn</a>
+    </div>
+
+    <nav>
+      <ul class="header-nav">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Work</a></li>
+        <li><a href="cart.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-icons">
+      <a href="cart.html" class="header-icon-btn" aria-label="Shopping bag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN: two-column layout (image left, details right)
+       ============================================================ -->
+  <main class="page-content">
+    <div class="product-page">
+
+      <!-- Left: project image -->
+      <div class="product-image-panel">
+        <div class="product-image-placeholder" id="product-image-wrapper">
+          <!-- Image injected by project.js -->
+          <span>Image Placeholder</span>
+        </div>
+      </div>
+
+      <!-- Right: project details -->
+      <div class="product-details-panel">
+
+        <!-- Breadcrumb -->
+        <p class="product-breadcrumb">
+          <a href="../index.html">Portfolio</a>
+          <span>/</span>
+          <a href="../index.html#projects">Work</a>
+          <span>/</span>
+          <span id="breadcrumb-title">Project</span>
+        </p>
+
+        <!-- Title -->
+        <h1 class="product-title" id="product-title">—</h1>
+
+        <!-- Subtitle -->
+        <p class="product-subtitle" id="product-subtitle">—</p>
+
+        <!-- Date (replaces price) -->
+        <p class="product-date" id="product-date">$ —</p>
+
+        <hr class="product-divider" />
+
+        <!-- Platform links (GitHub etc.) -->
+        <p class="product-links-label">Links</p>
+        <div class="product-links" id="product-links">
+          <!-- Injected by project.js -->
+        </div>
+
+        <hr class="product-divider" />
+
+        <!-- Project description -->
+        <p class="product-description" id="product-description">—</p>
+
+        <!-- Add to bag -->
+        <button class="btn-add-to-bag" id="btn-add-to-bag">Add to Bag</button>
+
+        <!-- Next project -->
+        <div class="next-project" id="next-project-section">
+          <p class="next-label">Next</p>
+          <div class="next-project-card" id="next-project-card">
+            <!-- Injected by project.js -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Scripts ── -->
+  <script src="../js/data.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/project.js"></script>
+</body>
+</html>
