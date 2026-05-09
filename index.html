@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body>
+<body onload="window.scrollTo(0, 0)">
 
   <!-- ============================================================
        HEADER
@@ -26,13 +26,13 @@
       <ul class="header-nav">
         <li><a href="#about">About</a></li>
         <li class="nav-item-work">
-          <a href="#projects">Work</a>
+          <a href="#projects">Project</a>
           <div class="nav-dropdown nav-dropdown-work" id="work-dropdown">
             <!-- Populated by index.js -->
           </div>
         </li>
         <li class="nav-item-contact">
-          <a href="cart.html">Contact</a>
+          <span class="nav-label">Contact</span>
           <div class="nav-dropdown nav-dropdown-contact" id="contact-dropdown">
             <!-- Populated by index.js -->
           </div>
@@ -126,26 +126,61 @@
     <!-- ── ABOUT SECTION ── -->
     <section class="about-section reveal" id="about">
       <div class="about-label">About</div>
-      <div class="about-body">
-        <h2>Forever a Learner.</h2>
-        <!-- TODO: Replace with your own bio -->
-        <p>
-          From a young age, I’ve always had a huge variety of interests, from dinosaurs and air balloons to art and
-          baking. I think I’ve always just enjoyed learning new things and finding ways to connect different ideas and
-          concepts together. That’s one trait I’m proud to say I still have today.
-          Despite being a firm believer of “no pain, no gain,” especially when it comes to education and personal
-          growth, I also think there’s something genuinely rewarding about learning. It definitely isn’t always easy to
-          stay curious or motivated, but I take pride in my ability to learn, adapt, and continuously improve.
-          As an engineering student, I enjoy combining technical thinking with creativity and design to create things
-          that are both functional and meaningful.
-        </p>
+
+      <div class="about-carousel-wrapper">
+
+        <div class="about-carousel" id="about-carousel">
+
+          <article class="about-card about-card-full">
+            <div class="about-card-image">
+              <img src="assets/about/ece.png" alt="">
+            </div>
+            <div class="about-card-text">
+              <span class="about-card-tag">Current focus</span>
+              <h2>Summer 2026</h2>
+              <p>In attempt of building multiple projects including this website</p>
+            </div>
+          </article>
+
+          <article class="about-card">
+            <div class="about-card-image">
+              <img src="assets/about/dino.png" alt="">
+            </div>
+            <div class="about-card-text">
+              <span class="about-card-tag">Motivation and pride</span>
+              <h2>Forever a Learner</h2>
+              <p>From a young age, I’ve always had a huge variety of interests, from dinosaurs and air balloons to art
+                and baking. I think I’ve always just enjoyed learning new things and finding ways to connect different
+                ideas and concepts together. That’s one trait I’m proud to say I still have today. 
+                Despite being a firm
+                believer of “no pain, no gain,” especially when it comes to education and personal growth, I also think
+                there’s something genuinely rewarding about learning. It definitely isn’t always easy to stay curious or
+                motivated, but I take pride in my ability to learn, adapt, and continuously improve. As an engineering
+                student, I enjoy combining technical thinking with creativity and design to create things that are both
+                functional and meaningful.</p>
+            </div>
+          </article>
+
+          <!-- <article class="about-card">
+            <div class="about-card-image">
+              <img src="assets/about/about3.png" alt="">
+            </div>
+            <div class="about-card-text">
+              <span class="about-card-tag">Feature</span>
+              <h2>Title Here</h2>
+              <p>Text here.</p>
+            </div>
+          </article> -->
+
+        </div>
+
       </div>
     </section>
 
     <!-- ── PROJECTS SECTION ── -->
     <section class="projects-section reveal" id="projects">
       <div class="section-header">
-        <span class="section-label">Selected Work</span>
+        <span class="section-label">Projects</span>
       </div>
 
       <!-- Grid is rendered by index.js from data.js -->

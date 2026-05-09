@@ -111,7 +111,8 @@ img {
   gap: 32px;
   list-style: none;
   position: absolute;
-  left: 50%;
+  left: 89%;
+  top: 18px;
   transform: translateX(-50%);
 }
 
@@ -165,6 +166,14 @@ img {
 .nav-dropdown a:hover {
   background-color: var(--light-gray);
   color: var(--text);
+}
+
+.nav-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  cursor: default;
 }
 
 /* Icons (right) */
@@ -337,12 +346,125 @@ img {
    ============================================================ */
 .about-section {
   border-top: 1px solid var(--warm-gray);
-  padding: 96px 32px;
+  padding: 96px 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ============================================================
+   ABOUT CAROUSEL SECTION
+   ============================================================ */
+
+.about-carousel-wrapper {
+  position: relative;
+  min-width: 0;
+}
+
+.about-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  padding-left: 32px;
+}
+
+.about-carousel {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 18px;
+}
+
+.about-carousel::-webkit-scrollbar {
+  height: 4px;
+}
+
+.about-carousel::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+.about-carousel::-webkit-scrollbar-thumb {
+  background: var(--mid-gray);
+}
+
+.about-card {
+  min-width: 95vw;
+  height: 550px;
+  scroll-snap-align: center;
+  background: var(--light-gray);
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 64px;
-  max-width: var(--max-w);
-  margin: 0 auto;
+  grid-template-columns: 0.9fr 1.1fr;
+  border: 1px solid var(--warm-gray);
+}
+
+.about-card-image {
+  background: var(--warm-gray);
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.about-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-card-text {
+  padding: 56px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-card-tag {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 18px;
+}
+
+.about-card-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3vw, 44px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.about-card-text p {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.9;
+  max-width: 520px;
+}
+
+.about-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--warm-gray);
+  background: var(--white);
+  color: var(--text);
+  font-size: 18px;
+  transition: background var(--transition), color var(--transition);
+}
+
+.about-arrow:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.about-arrow-left {
+  left: -18px;
+}
+
+.about-arrow-right {
+  right: -18px;
 }
 
 .about-label {
@@ -350,7 +472,8 @@ img {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--mid-gray);
-  padding-top: 4px;
+  padding-left: 40px;
+  margin-bottom: 12px;
 }
 
 .about-body h2 {
@@ -370,6 +493,58 @@ img {
   max-width: 560px;
 }
 
+/*===================================================================================*/
+/* Full image background cards */
+.about-card-full {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.about-card-full .about-card-image {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.about-card-full .about-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-card-full .about-card-text {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  max-width: 520px;
+  padding: 56px 64px;
+  justify-content: flex-end;
+  color: var(--white);
+}
+
+.about-card-full .about-card-tag,
+.about-card-full .about-card-text p {
+  color: rgba(250, 249, 247, 0.82);
+}
+
+.about-card-full::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.08));
+  z-index: 1;
+}
+.about-card-full::after {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.15)
+  );
+}
 /* ============================================================
    PROJECTS GRID (main page)
    ============================================================ */

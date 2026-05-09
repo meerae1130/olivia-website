@@ -4,6 +4,7 @@
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  window.scrollTo(0, 0);
 
   /* ── Populate contact links from data.js ── */
   const info = window.PERSONAL_INFO;
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const contactMethods = [
     { label: "Email", url: `mailto:${info.email}` },
-    { label: "LinkedIn", url: `https://${info.linkedin}` },
+    { label: "LinkedIn", url: info.linkedin },
     { label: "GitHub", url: info.github },
     { label: "Instagram", url: info.instagram },
   ];
@@ -49,6 +50,26 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ── Cart badge ── */
   updateCartBadge();
   window.addEventListener("cart-updated", updateCartBadge);
+  /* ── About carousel arrows ── */
+  const aboutCarousel = document.getElementById("about-carousel");
+  const aboutPrev = document.getElementById("about-prev");
+  const aboutNext = document.getElementById("about-next");
+
+  if (aboutCarousel && aboutPrev && aboutNext) {
+    aboutPrev.addEventListener("click", () => {
+      aboutCarousel.scrollBy({
+        left: -aboutCarousel.clientWidth * 0.75,
+        behavior: "smooth",
+      });
+    });
+
+    aboutNext.addEventListener("click", () => {
+      aboutCarousel.scrollBy({
+        left: aboutCarousel.clientWidth * 0.75,
+        behavior: "smooth",
+      });
+    });
+  }
 
   /* ── Render projects grid ── */
   const grid = document.getElementById("projects-grid");

@@ -2,7 +2,7 @@ const PERSONAL_INFO = {
   name: "Olivia Ahn",
   title: "Computer Engineer",
   email: "ahnmeerae@gmail.com",
-  linkedin: "www.linkedin.com/in/meeraeahn",
+  linkedin: "https://www.linkedin.com/in/meeraeahn",
   github: "https://github.com/meerae1130",
   instagram: "https://www.instagram.com/meer_ae?igsh=YzNsMjY5Y3A0dmp1&utm_source=qr",
 };
