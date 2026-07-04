@@ -50,13 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ── Populate header dropdown menus ── */
   const info = window.PERSONAL_INFO;
   const projects = window.PROJECTS;
+  const isPagesRoute = window.location.pathname.includes("/pages/");
 
   // Work dropdown - list all projects
   const workDropdown = document.getElementById("work-dropdown");
   if (workDropdown) {
+    workDropdown.innerHTML = "";
     projects.forEach((project) => {
       const link = document.createElement("a");
-      link.href = `pages/project.html?id=${project.id}`;
+      link.href = `${isPagesRoute ? "" : "pages/"}project.html?id=${project.id}`;
       link.textContent = project.title;
       workDropdown.appendChild(link);
     });
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactDropdown) {
     const contactMethods = [
       { label: "Email", url: `mailto:${info.email}` },
-      { label: "LinkedIn", url: `https://${info.linkedin}` },
+      { label: "LinkedIn", url: info.linkedin },
       { label: "GitHub", url: info.github },
       { label: "Instagram", url: info.instagram },
     ];

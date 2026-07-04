@@ -21,29 +21,36 @@ const PROJECTS = [
       Using Blender, SolidWorks, and 3D printing, the team created a modular, stackable design via dovetail joints, maximizing storage efficiency and durability.\
       As the project manager, I coordinated weekly meetings, delegated tasks, and ensured timely completion of milestones by creating and frequently updating the Gantt Chart.\
       The final product was presented at the 2026 ESP Design Expo, receiving positive feedback for its innovative design and practical application, by the committee members and professional engineers in attendance.",
-    image: "assets/battery/desc1.png",
-    image: "assets/battery/desc2.png",
-    image: "assets/battery/desc3.png",
-    image: "assets/battery/desc4.png",  
-    image: "assets/battery/desc5.png",
+    image: "assets/battery/cover.png",
     images: ["assets/battery/desc1.png", "assets/battery/desc2.png", "assets/battery/desc3.png", "assets/battery/desc4.png", "assets/battery/desc5.png"],
     links: [
       { icon: "bng", label: "bng", url: "https://blueandgold.skule.ca" },
     ],
   },
-  // {
-  //   id: 2,
-  //   title: "ML Pipeline",
-  //   subtitle: "Machine Learning",
-  //   date: "11/02/2023",
-  //   description:
-  //     "An end-to-end machine learning pipeline for sentiment analysis on social media data. Trained a transformer-based model achieving 94% accuracy, with a FastAPI backend serving predictions at scale.",
-  //   image: null,
-  //   links: [
-  //     { icon: "github", label: "GitHub", url: "https://github.com/oliviaahn/ml-pipeline" },
-  //     { icon: "external", label: "Live Demo", url: "https://demo.example.com" },
-  //   ],
-  // },
+  {
+    id: 2,
+    title: "Dual Mode Robot Car",
+    subtitle: "Robotics",
+    date: "SUMMER 2026",
+    description:
+      `Developed a dual mode robot car capable of both autonomous and manual operation.
+
+      AUTO MODE:
+      Utilized an Arduino microcontroller and five IR sensors to detect surface reflectivity and navigate the track.
+
+      MANUAL MODE:
+      Allowed remote control via a Bluetooth module and a mobile application.
+
+      HARDWARE:
+      The chassis was inspired by the Tesla Cybertruck and was designed, 3D modeled, and printed from scratch (using Fusion 360 and OnShape).
+      The interior conceals a breadboard with custom circuitry.
+
+      At the competition, the robot car won first place for the fastest average time in both autonomous and manual modes.`,
+    image: "assets/car/carcard.png",
+    images: ["assets/car/car1.png", "assets/car/car2.png", "assets/car/car3.png", "assets/car/car4.png",],
+    links: [
+    ],
+  },
 ];
 
 // Expose globally

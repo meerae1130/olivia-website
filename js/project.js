@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Work dropdown - list all projects
   const workDropdown = document.getElementById("work-dropdown");
+  workDropdown.innerHTML = "";
   projects.forEach((proj) => {
     const link = document.createElement("a");
     link.href = `project.html?id=${proj.id}`;
@@ -31,9 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Contact dropdown - list all contact methods
   const contactDropdown = document.getElementById("contact-dropdown");
+  contactDropdown.innerHTML = "";
   const contactMethods = [
     { label: "Email", url: `mailto:${info.email}` },
-    { label: "LinkedIn", url: `https://${info.linkedin}` },
+    { label: "LinkedIn", url: info.linkedin },
     { label: "GitHub", url: info.github },
     { label: "Instagram", url: info.instagram },
   ];

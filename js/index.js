@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.innerHTML = `
       <div class="project-card-img">
         ${project.image
-        ? `<img src="${"assets/battery/cover.png"}" alt="${project.title}" loading="lazy" />`
+        ? `<img src="${project.image}" alt="${project.title}" loading="lazy" />`
         : `<span class="placeholder-label">Image Placeholder</span>`
       }
         <span class="tag-new">New</span>
